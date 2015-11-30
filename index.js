@@ -7,5 +7,5 @@ app.get('/', function (req, res) {
 })
 
 app.listen(3001, function(){
-    console.log('app running');
+    console.log('app running on http://localhost:3001');
 });

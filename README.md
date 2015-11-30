@@ -4,9 +4,13 @@ Angular JS is a Javascript framework for creating client side applications.
 
 ## Intro
 
-There is a good [introduction video](https://www.youtube.com/watch?v=uFTFsKmkQnQ) on the Angular JS web site, but it is for Angular version 1.3 and older. 
+There is a good [introduction video](https://www.youtube.com/watch?v=uFTFsKmkQnQ) on the Angular JS web site, but it is for Angular version 1.3 and older. To follow along with the video you will need to do a few things differently. Those are specified below.
 
-To try is out this example I created this repository that contains an `index.html` file configured with all dependencies. You should wite youe Javascript in the `app.js` file. To be able to create the example application as in the video make the changes as specified below.
+I created this repository that contains an `index.html` file configured with all dependencies. You should write your client-side Javascript in the `app.js` file. To be able to create the example application as in the video make the changes as specified below.
+
+It's configures as and Express JS application as we will need a backend eventually for RESTFULL API calls from the client to the server. All initial code will be running on the client side.
+
+Start by doing a : `npm install` and then run the application using `nodemon index.js` - there is an `index.html` file in the `./public` folder.
 
 Open `index.html` in a browser there should be no errors if you open `Google Developer Tools`, `Firebug` or `Firefox Developer Tools` (I recommend installing the Firebug add-on when using Firefox).
 

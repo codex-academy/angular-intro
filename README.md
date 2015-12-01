@@ -58,11 +58,16 @@ Our API will need to look like this:
 | Update a todo  | PUT      | /api/todos/:id |
 | Delete a todo  | DELETE   | /api/todos/:id |
 
-We will need to create these routes in our Express Server's `index.js` file.
+You will need to create these routes in our Express Server's `index.js` file, make sure that each route returns the Action string, using `res.send('')`;
 
-Go ahead and create these routes, make sure that each route returns the Action string, using `res.send('')`;
+Once you created the API test is using a browser to test the `GET` routes. For the `PUT`, `DELETE` and `POST` routes things are more complicated, use [Postman](https://www.getpostman.com/) to test them. Each API call should return the Action text such as `Add todo` or `Get all todos` for example.
 
-Now test your newly created API - use a browser to test the `GET` routes. For the `PUT`, `DELETE` and `POST` routes things are more complicated. Use [Postman](https://www.getpostman.com/). Each API call should return the Action text such as `Add todo` or `Get all todos` for example.
+### Persist data using MongoDB
+
+### ngResource
+
+
+### Change your Todo App client side
 
 
 > API stands for Application Programming Interface. It

@@ -173,7 +173,7 @@ Pass a todo factory into the `TodoController`:
 
 You are ready now to change your application to start using your API using ngResource.
 
-Look at the examples below and integrate them into your application one by one. The examples are the building blocks that you will need to add a persistent backend to your application. How you use the building blocks might be quite tricky... @steve - need your input here especially.
+Look at the examples below and integrate them into your application one by one. The examples are the building blocks that you will need to add a persistent backend to your application. How you use the building blocks might be quite tricky... ** @steve - need your input here especially**.
 
 Be sure to test as you change each bit of functionality.
 

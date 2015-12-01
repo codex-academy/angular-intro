@@ -64,7 +64,7 @@ Once you have created the API, use a browser to test the `GET` routes. For the `
 
 ### Persist data using MongoDB
 
-You will persist your data using MongoDB, a NOSQL database, using the [MongoDB module](https://www.npmjs.com/package/mongodb). There are more details about the [Node JS API for Mongo on the mongodb site](https://docs.mongodb.org/getting-started/node/)
+You will persist your data using MongoDB, a NOSQL database, using the [MongoDB module](https://www.npmjs.com/package/mongodb) for Node JS. Here are more details about the [Node JS API for Mongo on the mongodb site](https://docs.mongodb.org/getting-started/node/)
 
 We will be using these functions from the Mongodb Module:
 
@@ -76,9 +76,11 @@ We will be using these functions from the Mongodb Module:
 | Update a todo  |  `updateOne()`  |
 | Delete a todo  |  `deleteOne()`  |
 
-The module support both callbacks and Promise syntax you will use the Promise syntax as it nicely seperates data and error handling from each other.
+The module support both callbacks and Promise syntax you will use the Promise syntax as it seperates data and error handling properly.
 
-To add a todo:
+You now need to extend the API you created earlier to use MongoDB to persist data.
+
+Here is an example of the API route which add a todo:
 
 ```javascript
 
@@ -106,6 +108,18 @@ app.post('/api/todos', function(req, res){
 });
 
 ```
+
+Now extend all the API calls to use Mongodb persist/retrieve data:
+
+| Action         |HTTP Verb | URL            | Mongo function |
+| :------------- |:---------| :------------- |----------------|
+| Add todo       | POST     | /api/todos     | `insertOne()`  |
+| Get all todos  | GET      | /api/todos     | `find()`       |
+| Get a todo     | GET      | /api/todos/:id | `findOne()`    |
+| Update a todo  | PUT      | /api/todos/:id | `updateOne()`  |
+| Delete a todo  | DELETE   | /api/todos/:id | `deleteOne()`  |
+
+As you change your API calls write tests using mocha and also use Postman to test all the calls.
 
 ### ngResource
 

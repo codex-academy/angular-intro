@@ -68,7 +68,7 @@ You will persist your data using MongoDB, a NOSQL database, using the [MongoDB m
 
 We will be using these functions from the Mongodb Module:
 
-| Action         |Mongo function   |
+| Action         |Mongo function to use   |
 | :------------- |:----------------|
 | Add todo       |  `insertOne()`  |
 | Get all todos  |  `find()`       | 
@@ -123,10 +123,90 @@ As you change your API calls write tests using mocha and also use Postman to tes
 
 ### ngResource
 
+Now that your API is properly integrated with MongoDB you will change your TODO app to use it using Angular's `ngResource` module.
+
+> [Angular CRUD using ngResource](http://www.sitepoint.com/creating-crud-app-minutes-angulars-resource/)
+
+The ngResource module makes it easy to call RESTFULL Api's.
+
+To be able to use ngResource you will need to:
+* reference the ngResources library in your javascript
+* configure Angular to use it
+* add and configure a Todo factory to use and instance of `ngResource` 
+* pass an instance of the Todo factory it into the Controller to use the ngResource Todo instance 
+
+To reference it add an entry like this in your html file and make sure you have a copy of the `angular-resource.min.js` file in the right location:
+
+```html
+<script src="angular-resource.min.js" charset="utf-8"></script>
+```
+
+Configure Angular to use it:
+
+```javascript
+var todoApp = angular.module('todoApp', ['ngResource'])
+```
+
+Add a todo factory:
+
+```javascript
+var todoApp = angular.module('todoApp', ['ngResource'])
+    .factory('Todo', function($resource, $http){
+        return $resource('/api/todos/:id',
+            { id: '@_id' },
+            {
+              //need this to support update
+              update: {
+                method: 'PUT'
+              }
+            });
+    })
+```
+
+Pass a todo factory into the `TodoController`:
+
+```javascript
+    .controller('TodoCtrl', function($scope, Todo){
+```
 
 ### Change your Todo App client side
 
+You are ready now to change your application to start using your API using ngResource.
 
-> API stands for Application Programming Interface. It
+Look at the examples below and integrate them into your application one by one. Be sure to test as you changing each bit of functionality.
 
-> [Angular CRUD using ngResource](http://www.sitepoint.com/creating-crud-app-minutes-angulars-resource/)
+Get all todos:
+
+```javascript
+  $scope.todos = Todo.query();
+```
+
+Add todo:
+
+```javascript
+Todo.save({text : $scope.todoText, done : false}, function(){
+    $scope.todoText = "";
+    getTodos();
+});
+```
+
+Update todo:
+
+```javascript
+todo.text = "still learning about Angular";
+
+todo.$update(function(){
+    getTodos();
+});
+```
+
+Delete a todo:
+
+```javascript
+
+// todo was retrieved using query/get
+
+todo.$delete(function(){
+   getTodos();
+});
+```

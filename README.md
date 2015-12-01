@@ -64,6 +64,49 @@ Once you have created the API, use a browser to test the `GET` routes. For the `
 
 ### Persist data using MongoDB
 
+You will persist your data using MongoDB, a NOSQL database, using the [MongoDB module](https://www.npmjs.com/package/mongodb). There are more details about the [Node JS API for Mongo on the mongodb site](https://docs.mongodb.org/getting-started/node/)
+
+We will be using these functions from the Mongodb Module:
+
+| Action         |Mongo function   |
+| :------------- |:----------------|
+| Add todo       |  `insertOne()`  |
+| Get all todos  |  `find()`       | 
+| Get a todo     |  `findOne()`    |
+| Update a todo  |  `updateOne()`  |
+| Delete a todo  |  `deleteOne()`  |
+
+The module support both callbacks and Promise syntax you will use the Promise syntax as it nicely seperates data and error handling from each other.
+
+To add a todo:
+
+```javascript
+
+// the mongodb url
+var url = 'mongodb://localhost:27017/todos';
+
+app.post('/api/todos', function(req, res){
+
+  // get the todo data from the request object.
+  var todo = req.body;
+    
+  MongoClient.connect(url, function(err, db) {
+        var todos = db.collection('todos');
+        todos
+            .insertOne(todo)
+            .then(function(todo){
+                res.send(todo);
+            })
+            .catch(function(err){
+                // log the error to the console for now
+                console.log(err);
+                res.send({});
+            });
+    });
+});
+
+```
+
 ### ngResource
 
 

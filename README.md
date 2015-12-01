@@ -171,19 +171,15 @@ Pass a todo factory into the `TodoController`:
 
 ### Change your Todo App client side
 
-You are ready now to change your application to start using your API using ngResource.
+You are now ready to change your application to access the API you just created using the ngResource module. The examples below are the building blocks you need to add MongoDB persistence to your API. Be sure to test as you change each bit of functionality.
 
-Look at the examples below and integrate them into your application one by one. The examples are the building blocks that you will need to add a persistent backend to your application. How you use the building blocks might be quite tricky... @steve - need your input here especially.
-
-Be sure to test as you change each bit of functionality.
-
-Get all todos:
+#### Get all todos:
 
 ```javascript
   $scope.todos = Todo.query();
 ```
 
-Add todo:
+#### Add todo:
 
 ```javascript
 Todo.save({text : $scope.todoText, done : false}, function(){
@@ -191,7 +187,7 @@ Todo.save({text : $scope.todoText, done : false}, function(){
 });
 ```
 
-Update todo:
+#### Update todo:
 
 ```javascript
 todo.text = "still learning about Angular";
@@ -201,7 +197,7 @@ todo.$update(function(){
 });
 ```
 
-Delete a todo:
+#### Delete a todo:
 
 ```javascript
 

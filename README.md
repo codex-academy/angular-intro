@@ -127,7 +127,7 @@ Now that your API is properly integrated with MongoDB you will change your TODO 
 
 > [Angular CRUD using ngResource](http://www.sitepoint.com/creating-crud-app-minutes-angulars-resource/)
 
-The ngResource module makes it easy to call RESTFULL Api's.
+The ngResource module makes it easy to call RESTFULL API's.
 
 To be able to use ngResource you will need to:
 * reference the ngResources library in your javascript

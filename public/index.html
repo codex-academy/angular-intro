@@ -6,7 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <script src="angular.min.js" charset="utf-8"></script>
-        <script src="app.js" charset="utf-8"></script>
+        <script src="angular-route.min.js" charset="utf-8"></script>
         <link rel="stylesheet" href="css/normalize.min.css">
         <link rel="stylesheet" href="css/skeleton.min.css">
         <link rel="stylesheet" href="css/todo.css">
@@ -17,10 +17,10 @@
             }
         </style>
     </head>
-    <body>
-        <div class="container">
-
+    <body ng-app="routeApp" >
+        <div class="container" >
+            <ng:view></ng:view>
         </div>
     </body>
-
+    <script src="app.js" charset="utf-8"></script>
 </html>

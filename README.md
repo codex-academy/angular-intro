@@ -38,11 +38,11 @@ In your html file you need to reference the application name.
 
 ## Backend
 
-We will also look into how to create a backend for your application using `ngResource`. We will create  and simple RESTful API using Express JS, which stores data in MongoDB.
+We will also look into how to create a backend for your application using `ngResource`. We will create a simple RESTful API using Express JS, which stores data in MongoDB.
 
 Your todo app should be working well by now. You can create new todos, finish them, and clear completed todos. Once you restart your application all todos are gone, though: your application is not persisting the todos. We are about to fix that. Will also fix the fact that other people can't see which todos you've already completed, as all the action has been in your browser.
 
-Angular is a **client-side framework**, which is good at displaying and manipulating data in the browser. If it needs data from the server it needs an API, to fetch or send data to/from the server. It uses AJAX (XMLHttpRequest) to do this. An API is different from a web page, is only contains data no layout. The API we will create uses JSON (JavaScript Object Notation) to send data using Javascript lists and maps.
+Angular is a **client-side framework**, which is good at displaying and manipulating data in the browser. If it needs data from the server it needs an API, to fetch or send data to and from the server. It uses AJAX (XMLHttpRequest) to do this. An API is different from a web page: it only contains data, no layout. The API we will create uses JSON (JavaScript Object Notation) to send data using Javascript lists and maps.
 
 Angular has two objects that allow server side access: `$http` and the `$ngResource`. We will be focussing on `$ngResource`. We will need to create a RESTful HTTP API to use.
 
@@ -66,24 +66,23 @@ Once you have created the API, use a browser to test the `GET` routes. For the `
 
 You will persist your data using MongoDB, a NOSQL database, using the [MongoDB module](https://www.npmjs.com/package/mongodb) for Node JS. Here are more details about the [Node JS API for Mongo on the mongodb site](https://docs.mongodb.org/getting-started/node/)
 
-We will be using these functions from the Mongodb Module:
+We will be using these functions from the MongoDB Module:
 
 | Action         |Mongo function to use   |
 | :------------- |:----------------|
 | Add todo       |  `insertOne()`  |
-| Get all todos  |  `find()`       | 
+| Get all todos  |  `find()`       |
 | Get a todo     |  `findOne()`    |
 | Update a todo  |  `updateOne()`  |
 | Delete a todo  |  `deleteOne()`  |
 
-The module support both callbacks and Promise syntax you will use the Promise syntax as it seperates data and error handling properly.
+The module support both callbacks and the Promise syntax. We will use the Promise syntax as it separates data and error handling properly.
 
 You now need to extend the API you created earlier to use MongoDB to persist data.
 
 Here is an example of the API route which add a todo:
 
 ```javascript
-
 // the mongodb url
 var url = 'mongodb://localhost:27017/todos';
 
@@ -91,7 +90,7 @@ app.post('/api/todos', function(req, res){
 
   // get the todo data from the request object.
   var todo = req.body;
-    
+
   MongoClient.connect(url, function(err, db) {
         var todos = db.collection('todos');
         todos
@@ -109,7 +108,7 @@ app.post('/api/todos', function(req, res){
 
 ```
 
-Now extend all the API calls to use Mongodb persist/retrieve data:
+Now extend all the API calls to use MongoDB persist/retrieve data:
 
 | Action         |HTTP Verb | URL            | Mongo function |
 | :------------- |:---------| :------------- |----------------|
@@ -119,7 +118,7 @@ Now extend all the API calls to use Mongodb persist/retrieve data:
 | Update a todo  | PUT      | /api/todos/:id | `updateOne()`  |
 | Delete a todo  | DELETE   | /api/todos/:id | `deleteOne()`  |
 
-As you change your API calls write tests using mocha and also use Postman to test all the calls.
+As you change your API calls, write tests using mocha. Use Postman to test the calls.
 
 ### ngResource
 
@@ -127,15 +126,14 @@ Now that your API is properly integrated with MongoDB you will change your TODO 
 
 > [Angular CRUD using ngResource](http://www.sitepoint.com/creating-crud-app-minutes-angulars-resource/)
 
-The ngResource module makes it easy to call RESTFULL API's.
+The `ngResource` module makes it easy to call RESTful APIs. To be able to use `ngResource` you will need to:
 
-To be able to use ngResource you will need to:
 * reference the ngResources library in your javascript
 * configure Angular to use it
-* add and configure a Todo factory to use and instance of `ngResource` 
-* pass an instance of the Todo factory it into the Controller to use the ngResource Todo instance 
+* add and configure a todo factory to use andinstance of `ngResource`
+* pass an instance of the todo factory into the Controller, and use the `ngResource` todo instance
 
-To reference it add an entry like this in your html file and make sure you have a copy of the `angular-resource.min.js` file in the right location:
+To reference it, add an entry like this in your html file and make sure you have a copy of the `angular-resource.min.js` file in the right location:
 
 ```html
 <script src="angular-resource.min.js" charset="utf-8"></script>
@@ -169,9 +167,9 @@ Pass a todo factory into the `TodoController`:
     .controller('TodoCtrl', function($scope, Todo){
 ```
 
-### Change your Todo App client side
+### Change your todo App client side
 
-You are now ready to change your application to access the API you just created using the ngResource module. The examples below are the building blocks you need to add MongoDB persistence to your API. Be sure to test as you change each bit of functionality.
+You are now ready to change your application to access the API you just created using the `ngResource` module. The examples below are the building blocks you need to add MongoDB persistence to your API. Be sure to test as you change each bit of functionality.
 
 #### Get all todos:
 

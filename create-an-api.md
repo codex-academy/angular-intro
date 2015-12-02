@@ -32,7 +32,7 @@ The module support both callbacks and the Promise syntax. We will use the Promis
 
 You now need to extend the API you created earlier to use MongoDB to persist data.
 
-Here is an example of the API route which add a todo:
+Here is an example of the API route which adds a todo:
 
 ```javascript
 // the mongodb url
@@ -74,7 +74,7 @@ As you change your API calls, write tests using mocha. Use Postman to test the c
 
 ## ngResource
 
-Now that your API is properly integrated with MongoDB you will change your TODO app to use it using Angular's `ngResource` module.
+Now that your API is properly integrated with MongoDB you will change your todo app to use it using Angular's `ngResource` module.
 
 > [Angular CRUD using ngResource](http://www.sitepoint.com/creating-crud-app-minutes-angulars-resource/)
 
@@ -82,10 +82,10 @@ The `ngResource` module makes it easy to call RESTful APIs. To be able to use `n
 
 * reference the ngResources library in your javascript
 * configure Angular to use it
-* add and configure a todo factory to use andinstance of `ngResource`
+* add and configure a todo factory to use an instance of `ngResource`
 * pass an instance of the todo factory into the Controller, and use the `ngResource` todo instance
 
-To reference it, add an entry like this in your html file and make sure you have a copy of the `angular-resource.min.js` file in the right location:
+To reference it, add an entry like this in your `html` file and make sure you have a copy of the `angular-resource.min.js` file in the right location:
 
 ```html
 <script src="angular-resource.min.js" charset="utf-8"></script>

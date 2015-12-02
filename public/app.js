@@ -1,7 +1,12 @@
 var routeApp = angular.module('routeApp', ['ngRoute']);
 
-routeApp.controller('EventController', function($scope){
+routeApp.controller('EventController', function($scope, $location){
     $scope.name = "Ola!";
+
+    $scope.go = function(){
+        $location.path("/events/671");
+    };
+
 });
 
 routeApp.controller('EventDetailsController', function($scope, $routeParams){

@@ -38,6 +38,13 @@ In your html file you need to reference the application name.
 
 ## Backend
 
-We will also look into how to create a backend for you application using `ngResource`. We will create a simple RESTful API using Express JS, which stores data in MongoDB.
+We will also look into how to create a backend for your application using `ngResource`. We will create a simple RESTful API using Express JS, which stores data in MongoDB.
 
-> [Angular CRUD using ngResource](http://www.sitepoint.com/creating-crud-app-minutes-angulars-resource/)
+Your todo app should be working well by now. You can create new todos, finish them, and clear completed todos. Once you restart your application all todos are gone, though: your application is not persisting the todos. We are about to fix that. Will also fix the fact that other people can't see which todos you've already completed, as all the action has been in your browser.
+
+Angular is a **client-side framework**, which is good at displaying and manipulating data in the browser. If it needs data from the server it needs an API, to fetch or send data to and from the server. It uses AJAX (XMLHttpRequest) to do this. An API is different from a web page: it only contains data, no layout. The API we will create uses JSON (JavaScript Object Notation) to send data using Javascript lists and maps.
+
+Angular has two objects that allow server side access: `$http` and the `$ngResource`. We will be focussing on `$ngResource`. We will need to create a RESTful HTTP API to use.
+
+
+Now let's [Create an API](./create-an-api.md).
